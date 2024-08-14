@@ -21,3 +21,13 @@ export const searchHeroes = async (query) => {
     return [];
   }
 };
+
+export const fetchHeroById = async (id) => {
+  try {
+    const response = await axios.get(`https://swapi.dev/api/people/${id}/`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetch details: ", error);
+    return null;
+  }
+};
