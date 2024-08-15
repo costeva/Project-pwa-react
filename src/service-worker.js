@@ -82,7 +82,6 @@ registerRoute(
   })
 );
 
-// Cacheo de las rutas dinámicas /people/:id
 registerRoute(
   ({ url }) => url.pathname.startsWith("/people/"),
   new NetworkFirst({
