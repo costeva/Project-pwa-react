@@ -21,6 +21,7 @@ clientsClaim();
 // even if you decide not to use precaching. See https://cra.link/PWA
 precacheAndRoute(self.__WB_MANIFEST);
 precacheAndRoute([{ url: "/offline.html", revision: null }]);
+
 const additionalAssets = [
   "/android-chrome-192x192.png",
   "/android-chrome-512x512.png",
@@ -69,9 +70,9 @@ registerRoute(
       const networkResponse = await fetch(event.request);
       return networkResponse;
     } catch (error) {
-      const cache = await caches.open("offline-cache");
+      const cache = await caches.open(self.__WB_MANIFEST);
       const cachedResponse = await cache.match("/offline.html");
-      return cachedResponse;
+      return cachedResponse || Response.error();
     }
   }
 );
