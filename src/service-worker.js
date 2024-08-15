@@ -30,6 +30,8 @@ const additionalAssets = [
   "/robots.txt",
   "/screenshot_v_new.png",
   "/screenshot_h_new.png",
+  "/pngwing.com",
+  "/logo_yoda.png",
 ];
 
 precacheAndRoute(additionalAssets);
