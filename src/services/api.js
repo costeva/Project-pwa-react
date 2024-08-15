@@ -1,13 +1,16 @@
 import axios from "axios";
 
-export const fetchHeroes = async () => {
+export const fetchHeroes = async (url) => {
   try {
-    const response = await axios.get("https://swapi.dev/api/people/");
-    return response.data.results;
+    const response = await axios.get(url);
+    return response.data;
   } catch (error) {
-    console.error("Error fetch: ", error);
+    console.error(error);
     return [];
   }
+};
+export const getInitialHeroes = async () => {
+  return await fetchHeroes("https://swapi.dev/api/people/");
 };
 
 export const searchHeroes = async (query) => {
@@ -27,7 +30,17 @@ export const fetchHeroById = async (id) => {
     const response = await axios.get(`https://swapi.dev/api/people/${id}/`);
     return response.data;
   } catch (error) {
-    console.error("Error fetch details: ", error);
+    console.error(error);
+    return null;
+  }
+};
+
+export const fetchMoreData = async (url) => {
+  try {
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    console.error(error);
     return null;
   }
 };
