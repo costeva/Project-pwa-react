@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo_yoda.png";
 const Welcome = () => {
   const navigate = useNavigate();
   const handleEnter = () => {
@@ -9,9 +10,9 @@ const Welcome = () => {
     <div className="flex items-center justify-center min-h-screen bg-gray-900 text-white">
       <div className="text-center">
         <img
-          src="/path-to-your-image.jpg" // Reemplaza con la ruta de tu imagen
+          src={logo}
           alt="Welcome"
-          className="mx-auto mb-8 w-64 h-64 object-cover rounded-full"
+          className="mx-auto mb-8 w-80 h-80 object-cover rounded-full"
         />
         <h1 className="text-5xl font-bold mb-6">Welcome to Star Wars</h1>
         <p className="text-lg mb-8">

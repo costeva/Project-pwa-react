@@ -20,6 +20,7 @@ clientsClaim();
 // This variable must be present somewhere in your service worker file,
 // even if you decide not to use precaching. See https://cra.link/PWA
 precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute([{ url: "/offline.html", revision: null }]);
 const additionalAssets = [
   "/android-chrome-192x192.png",
   "/android-chrome-512x512.png",
@@ -27,8 +28,8 @@ const additionalAssets = [
   "/favicon.ico",
   "/manifest.json",
   "/robots.txt",
-  "/screenshot_v.jpg",
-  "/screenshot_h.jpg",
+  "/screenshot_v_new.png",
+  "/screenshot_h_new.png",
 ];
 
 precacheAndRoute(additionalAssets);
@@ -59,6 +60,20 @@ registerRoute(
 
 // An example runtime caching route for requests that aren't handled by the
 // precache, in this case same-origin .png requests like those from in public/
+registerRoute(
+  ({ request }) => request.mode === "navigate",
+  async ({ event }) => {
+    try {
+      const networkResponse = await fetch(event.request);
+      return networkResponse;
+    } catch (error) {
+      const cache = await caches.open("offline-cache");
+      const cachedResponse = await cache.match("/offline.html");
+      return cachedResponse;
+    }
+  }
+);
+
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
   ({ url }) =>
