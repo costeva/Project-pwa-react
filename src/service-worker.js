@@ -20,7 +20,6 @@ clientsClaim();
 // This variable must be present somewhere in your service worker file,
 // even if you decide not to use precaching. See https://cra.link/PWA
 precacheAndRoute(self.__WB_MANIFEST);
-precacheAndRoute([{ url: "/offline.html", revision: null }]);
 
 const additionalAssets = [
   "/android-chrome-192x192.png",
