@@ -33,6 +33,8 @@ const additionalAssets = [
   "/screenshot_h_new.png",
   "/pngwing.com",
   "/logo_yoda.png",
+  "/offline.html",
+  "/offline.png",
 ];
 
 precacheAndRoute(additionalAssets);
@@ -70,9 +72,9 @@ registerRoute(
       const networkResponse = await fetch(event.request);
       return networkResponse;
     } catch (error) {
-      const cache = await caches.open(self.__WB_MANIFEST);
+      const cache = await caches.open("offline-cache");
       const cachedResponse = await cache.match("/offline.html");
-      return cachedResponse || Response.error();
+      return cachedResponse;
     }
   }
 );
