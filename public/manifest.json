@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Star Wars",
+  "name": "Star Wars App PWA",
+  "description": "An application that allows you to view Star Wars characters; you will be able to search for them and see their details",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +9,47 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
+    },
+    {
+      "src": "ndroid-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     }
   ],
-  "start_url": ".",
+  "start_url": "/?source=pwa",
   "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "background_color": "rgb(17, 24, 39)",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "lang": "es-MX",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "categories": ["utilities", "productivity"],
+  "screenshots": [
+    {
+      "src": "screenshot_v.jpg",
+      "sizes": "640x480",
+      "type": "image/jpg"
+    },
+    {
+      "src": "screenshot_h.jpg",
+      "sizes": "1280x720",
+      "type": "image/jgp"
+    }
+  ]
 }
