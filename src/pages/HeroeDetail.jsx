@@ -17,7 +17,7 @@ const HeroDetail = () => {
       )}
       {!loading && (
         <div className="text-white">
-          <div className="container mx-auto p-4 max-w-4xl">
+          <div className="container mx-auto p-4 max-w-4xl flex justify-center">
             <button
               onClick={() => navigate(-1)}
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
