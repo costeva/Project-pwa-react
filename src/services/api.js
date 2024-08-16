@@ -5,7 +5,6 @@ export const fetchHeroes = async (url) => {
     const response = await axios.get(url);
     return response.data;
   } catch (error) {
-    console.error(error);
     return [];
   }
 };
@@ -20,7 +19,6 @@ export const searchHeroes = async (query) => {
     );
     return response.data.results;
   } catch (error) {
-    console.error("Error search ", error);
     return [];
   }
 };
@@ -30,7 +28,6 @@ export const fetchHeroById = async (id) => {
     const response = await axios.get(`https://swapi.dev/api/people/${id}/`);
     return response.data;
   } catch (error) {
-    console.error(error);
     return null;
   }
 };
@@ -40,7 +37,6 @@ export const fetchMoreData = async (url) => {
     const response = await axios.get(url);
     return response.data;
   } catch (error) {
-    console.error(error);
     return null;
   }
 };

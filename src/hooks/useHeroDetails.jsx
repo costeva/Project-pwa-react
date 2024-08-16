@@ -15,9 +15,9 @@ const useHeroDetails = (id) => {
       const data = await fetchHeroById(id);
       setHero(data);
 
-      if (data.homeworld) {
-        const homeworldData = await fetchMoreData(data.homeworld);
-        setHomeworld(homeworldData.name);
+      if (data?.homeworld) {
+        const homeworldData = await fetchMoreData(data?.homeworld);
+        setHomeworld(homeworldData?.name);
       }
       if (data.films.length > 0) {
         const filmsData = [];

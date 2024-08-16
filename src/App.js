@@ -12,6 +12,7 @@ function App() {
       <div className="App">
         <div className="container mx-auto p-4">
           <Nav />
+
           <main>
             <Routes>
               <Route path="/" element={<Welcome />} />

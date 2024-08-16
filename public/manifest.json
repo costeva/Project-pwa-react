@@ -40,6 +40,7 @@
   "related_applications": [],
   "prefer_related_applications": false,
   "categories": ["utilities", "productivity"],
+
   "screenshots": [
     {
       "src": "screenshot_v_new.png",
@@ -51,5 +52,6 @@
       "sizes": "1280x720",
       "type": "image/png"
     }
-  ]
+  ],
+  "offline_url": "/offline.html"
 }

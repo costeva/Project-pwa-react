@@ -3,6 +3,7 @@ import HeroFilter from "../HeroSearch";
 import { Link } from "react-router-dom";
 import Spinner from "../Spinner";
 import useHeroes from "../../hooks/useHeroes";
+import { motion } from "framer-motion";
 const HeroList = () => {
   const {
     heroes,
@@ -31,7 +32,7 @@ const HeroList = () => {
       {!loading && (
         <div className="container mx-auto p-4">
           <HeroFilter onSearch={handleSearchResults} />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-14">
             {heroes.map((hero) => {
               const id = hero.url.split("/").filter(Boolean).pop();
               const imageUrl = `${imageBaseUrl}${id}.jpg`;
@@ -40,7 +41,7 @@ const HeroList = () => {
                   <HeroCard
                     name={hero.name}
                     image={imageUrl}
-                    details={`Height: ${hero.height} | Mass: ${hero.mass}`}
+                    details={`Height: ${hero.height} | Mass: ${hero.mass} | gender: ${hero.gender} | films: ${hero.films.length}`}
                     id={id}
                   />
                 </Link>
@@ -48,20 +49,24 @@ const HeroList = () => {
             })}
           </div>
           <div className="flex justify-between mt-4">
-            <button
+            <motion.button
               onClick={goToPreviousPage}
               disabled={!previousPageUrl}
               className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               Previous
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={goToNextPage}
               disabled={!nextPageUrl}
               className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
             >
               Next
-            </button>
+            </motion.button>
           </div>
         </div>
       )}
