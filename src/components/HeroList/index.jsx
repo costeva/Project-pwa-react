@@ -27,7 +27,7 @@ const HeroList = () => {
         </div>
       )}
       {!loading && (
-        <div className="container mx-auto p-4">
+        <div className="container mx-auto p-4 ">
           <HeroFilter />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-14">
             {heroes.map((hero) => {
@@ -45,7 +45,7 @@ const HeroList = () => {
               );
             })}
           </div>
-          <div className="flex justify-between mt-4">
+          <div className="flex justify-between mt-5">
             <motion.button
               onClick={goToPreviousPage}
               disabled={!previousPageUrl}
