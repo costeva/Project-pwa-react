@@ -116,25 +116,20 @@ registerRoute(
   })
 );
 
-self.addEventListener("fetch", (event) => {
-  if (event.request.mode === "navigate") {
-    event.respondWith(
-      (async () => {
-        try {
-          const preloadResponse = await event.preloadResponse;
-          if (preloadResponse) {
-            return preloadResponse;
-          }
-
-          return await fetch(event.request);
-        } catch (error) {
-          const cache = await caches.open("offline-cache");
-          return await cache.match("/offline.html");
-        }
-      })()
-    );
+registerRoute(
+  ({ request }) => request.destination === "document",
+  async ({ event }) => {
+    try {
+      return (
+        (await event.preloadResponse) ||
+        (await caches.match(event.request)) ||
+        (await fetch(event.request))
+      );
+    } catch (error) {
+      return caches.match("/offline.html");
+    }
   }
-});
+);
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
