@@ -72,6 +72,49 @@ registerRoute(
     ],
   })
 );
+registerRoute(
+  ({ url }) =>
+    url.origin === "https://swapi.dev" && url.pathname.startsWith("/api/films"),
+  new NetworkFirst({
+    cacheName: "star-wars-api-films",
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  })
+);
+
+registerRoute(
+  ({ url }) =>
+    url.origin === "https://swapi.dev" &&
+    url.pathname.startsWith("/api/vehicles"),
+  new NetworkFirst({
+    cacheName: "star-wars-api-vehicles",
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  })
+);
+
+registerRoute(
+  ({ url }) =>
+    url.origin === "https://swapi.dev" &&
+    url.pathname.startsWith("/api/starships"),
+  new NetworkFirst({
+    cacheName: "star-wars-api-starships",
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  })
+);
 
 self.addEventListener("fetch", (event) => {
   if (event.request.mode === "navigate") {

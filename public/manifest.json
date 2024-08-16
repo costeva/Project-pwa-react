@@ -4,35 +4,56 @@
   "description": "An application that allows you to view Star Wars characters; you will be able to search for them and see their details",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "favicon16x16.png",
+      "sizes": "16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "android-chrome-192x192.png",
+      "src": "favicon24x24.png",
+      "sizes": "24x24",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon32x32.png",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon48x48.png",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon64x64.png",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+
+    {
+      "src": "android192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "android-chrome-512x512.png",
+      "src": "android512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "ndroid-chrome-512x512.png",
+      "src": "android512x512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
     },
     {
-      "src": "apple-touch-icon.png",
+      "src": "appletouch.png",
       "sizes": "180x180",
       "type": "image/png"
     }
   ],
-  "start_url": "/?source=pwa",
-  "display": "standalone",
-  "orientation": "portrait",
+  "start_url": "/",
+  "display": "fullscreen",
+  "orientation": "any",
   "scope": "/",
   "background_color": "rgb(17, 24, 39)",
   "theme_color": "#000000",
@@ -40,18 +61,32 @@
   "related_applications": [],
   "prefer_related_applications": false,
   "categories": ["utilities", "productivity"],
-
+  "offline_url": "/offline.html",
   "screenshots": [
     {
-      "src": "screenshot_v_new.png",
+      "src": "screenshot480x640.png",
+      "sizes": "480x640",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshot640x480.png",
       "sizes": "640x480",
+      "type": "image/png"
+    },
+    {
+      "src": "screenshot720x1280.png",
+      "sizes": "720x1280",
       "type": "image/png"
     },
     {
       "src": "screenshot_h_new.png",
       "sizes": "1280x720",
       "type": "image/png"
+    },
+    {
+      "src": "yodastarwars1440x900.png",
+      "sizes": "1440x900",
+      "type": "image/png"
     }
-  ],
-  "offline_url": "/offline.html"
+  ]
 }
