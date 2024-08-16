@@ -1,10 +1,14 @@
 import HeroCard from "../HeroCard";
 import HeroFilter from "../HeroSearch";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import Spinner from "../Spinner";
 import useHeroes from "../../hooks/useHeroes";
 import { motion } from "framer-motion";
+
 const HeroList = () => {
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get("search") || "";
+
   const {
     heroes,
     loading,
@@ -12,15 +16,8 @@ const HeroList = () => {
     goToPreviousPage,
     nextPageUrl,
     previousPageUrl,
-    setHeroesDirectly,
-  } = useHeroes("https://swapi.dev/api/people/");
+  } = useHeroes("https://swapi.dev/api/people/?search=" + search);
   const imageBaseUrl = process.env.REACT_APP_IMAGE_BASE_URL;
-
-  const handleSearchResults = (results) => {
-    if (Array.isArray(results) && results.length > 0) {
-      setHeroesDirectly(results);
-    }
-  };
 
   return (
     <div className="relative">
@@ -31,7 +28,7 @@ const HeroList = () => {
       )}
       {!loading && (
         <div className="container mx-auto p-4">
-          <HeroFilter onSearch={handleSearchResults} />
+          <HeroFilter />
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-14">
             {heroes.map((hero) => {
               const id = hero.url.split("/").filter(Boolean).pop();

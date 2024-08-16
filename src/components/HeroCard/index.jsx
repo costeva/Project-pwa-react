@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaInfoCircle } from "react-icons/fa";
+
 const HeroCard = ({ name, image, details }) => {
   return (
     <motion.div

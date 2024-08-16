@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const fetchHeroes = async (url) => {
+  console.log("fetchHeroes", url);
   try {
     const response = await axios.get(url);
     return response.data;
@@ -8,19 +9,9 @@ export const fetchHeroes = async (url) => {
     return [];
   }
 };
+
 export const getInitialHeroes = async () => {
   return await fetchHeroes("https://swapi.dev/api/people/");
-};
-
-export const searchHeroes = async (query) => {
-  try {
-    const response = await axios.get(
-      `https://swapi.dev/api/people/?search=${query}`
-    );
-    return response.data.results;
-  } catch (error) {
-    return [];
-  }
 };
 
 export const fetchHeroById = async (id) => {
