@@ -1,17 +1,12 @@
 import axios from "axios";
 
 export const fetchHeroes = async (url) => {
-  console.log("fetchHeroes", url);
   try {
     const response = await axios.get(url);
     return response.data;
   } catch (error) {
     return [];
   }
-};
-
-export const getInitialHeroes = async () => {
-  return await fetchHeroes("https://swapi.dev/api/people/");
 };
 
 export const fetchHeroById = async (id) => {
