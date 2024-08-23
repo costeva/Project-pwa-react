@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 const HeroList = () => {
   const [searchParams] = useSearchParams();
   const search = searchParams.get("search") || "";
+  const imageBaseUrl = process.env.REACT_APP_IMAGE_BASE_URL;
 
   const {
     heroes,
@@ -16,8 +17,7 @@ const HeroList = () => {
     goToPreviousPage,
     nextPageUrl,
     previousPageUrl,
-  } = useHeroes("https://swapi.dev/api/people/?search=" + search);
-  const imageBaseUrl = process.env.REACT_APP_IMAGE_BASE_URL;
+  } = useHeroes(search);
 
   return (
     <div className="relative">

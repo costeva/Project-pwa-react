@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { fetchHeroes } from "../services/api";
 import Swal from "sweetalert2";
-const useHeroes = (initialUrl) => {
+const useHeroes = (search) => {
+  const baseUrl = "https://swapi.dev/api/people/";
   const [heroes, setHeroes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [nextPageUrl, setNextPageUrl] = useState(null);
   const [previousPageUrl, setPreviousPageUrl] = useState(null);
   const [currentPageUrl, setCurrentPageUrl] = useState(() => {
-    return sessionStorage.getItem("currentPageUrl") || initialUrl;
+    return sessionStorage.getItem("currentPageUrl") || baseUrl;
   });
 
   const loadHeroes = async (url) => {
@@ -39,13 +40,14 @@ const useHeroes = (initialUrl) => {
   };
 
   useEffect(() => {
+    const url = search ? `${baseUrl}?search=${search}` : baseUrl;
+    setCurrentPageUrl(url);
+  }, [search]);
+
+  useEffect(() => {
     sessionStorage.setItem("currentPageUrl", currentPageUrl);
     loadHeroes(currentPageUrl);
   }, [currentPageUrl]);
-
-  useEffect(() => {
-    setCurrentPageUrl(initialUrl);
-  }, [initialUrl]);
 
   const goToNextPage = () => {
     if (nextPageUrl && currentPageUrl !== nextPageUrl) {
